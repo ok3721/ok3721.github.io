@@ -1,10 +1,12 @@
 ---
    layout: post
-   title: "Trying out neovim as a vscode user"
+   title: "Trying out Neovim as a VScode user"
    date:   2026-04-05 20:34:41 +0800
    categories: others
    tags: neovim
 ---
+
+Disclaimer: This article is partially written with Neovim
 
 > Recently I started switching to neovim, because I find that vscode is using too much memory (though found out later that it is the python language server that taking up too much memory)
 
@@ -24,7 +26,7 @@ Wez's Terminal is usually the first recommended option, however it's now current
 
 #### Alacritty
 
-Fast, low ram usage, and aesthetically pleasing. But there is a critical bug if you have more than one monitor [issue#8634](https://github.com/alacritty/alacritty/issues/8634).
+Fast, low ram usage, and aesthetically pleasing. But there is a critical bug if you have more than one monitor ([issue#8634](https://github.com/alacritty/alacritty/issues/8634)).
 
 #### Neovide
 
@@ -32,7 +34,7 @@ Just like Alacritty, it's fast, but also suffers from the same window resizing b
 
 #### Windows Terminal
 
-Needs to set up a new profile to avoid messing with the system default terminal, and personally it feels more clunky and visually unappealing. But on the plus side, it has native multiple panes/tabs support.
+Needs to set up a new profile to avoid messing with the system default terminal, and personally it feels more clunky and visually unappealing than other third-party terminal apps. But on the plus side, it has native multiple panes/tabs support.
 
 Currently I use both Alacritty and Windows Terminal, depends on which one is most easy to open from current project location
 
@@ -42,9 +44,10 @@ After the terminal is settled, I gave it a go, opened a pandas project, the seco
 
 Lol, guess I have to thank neovim for this learning opportunity, never knew that pandas require this extra package as vscode takes care of everything for you.
 
+### My experience
 Here is my thought after using neovim for serious development for a day:
 
-The vim shortcut is really powerful for editing, though I still need some time to master it, and the simple UI offers less distraction than vscode, good for concentrating your mind on code. Plus, the looking of it feels way cooler than vscode!
+The vim shortcut is really powerful for code editing/browsing, though I still need some time to master it, and the simple UI offers less distraction than vscode, good for concentrating your mind on code. Plus, the looking of it feels way cooler than vscode!
 
 But on the down side, there are several features that I miss from vscode:
 
@@ -60,6 +63,12 @@ I know there is tmux/Zellij for window managing and neovim shortcut for editing 
 
 Yes there are alternatives to jupyter and data wrangler for neovim, but same as above, I don't have time to look into them, and these plugins seem less well maintained than their vscode counterparts. 
 
+#### Remote
+
+For most part it worked like a charm, just ssh into the remote server and start neovim, until you need to copy/paste to the SSH terminal from your system..
+
+Gotta credit Neovide for the out-of-box support for system clipboard integration in remote mode. For Windows Terminal and Alacritty, you have to copy with `Ctrl-C`/`Ctrl-Shift-C` after select the text holding `Shift` key to override neovim selection mode, and can only paste text when in insert mode, which means no "+ registers for you in remote.
+
 ## Final verdict
 
-For now, neovim is a handy tool for quick editing or writing small scripts. Stick to vscode for anything involves data processing, debugger, etc..
+For me, neovim is a handy tool for quick editing or writing small scripts. Stick to vscode for anything involves data processing, debugger, etc..
