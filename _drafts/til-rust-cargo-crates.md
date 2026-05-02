@@ -6,11 +6,13 @@
    tags: rust winit alacritty
 ---
 
-Today I Learned how to override rust project dependency to use the local fork of a crate that's been published to crates.io.
+Today I Learned how to override rust project dependency, in order to use local fork of a crate that's been published on crates.io.
 
 ## The problem
 As I mentioned in [Trying out Neovim as a VScode user](https://ok3721.github.io/others/2026/04/05/trying-neovim.html), currently `neovide` and `alacritty` hav a weird [glitch‌](https://github.com/alacritty/alacritty/issues/8634) that infinitely resize when you drag one window to a second monitor, which in turn is a [bug](https://github.com/rust-windowing/winit/issues/4041) orginated from upstrem crate.
-While this bug is fixed in [v0.31.0-beta.2](https://github.com/rust-windowing/winit/commit/488c036a05d418e13bbdcdc349e2db2f6b7f58e2), `winit-0.31.0-beta.2` introduces lots of API updates and it won't be merged to alacritty soon‌ ([alacritty/pull/8750](alacritty/pull/8750))
+
+While this bug is fixed in `winit v0.31.0-beta.2`, this new version also introduces lots of API updates and it won't be merged to alacritty anytime soon‌ ([alacritty/pull/8750](https://github.com/alacritty/alacritty/pull/8750))
 
 ## The solution
-Once again, as in Rust tradition, `cargo` also have wonderful  [document](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html) to learn the basics.
+As in Rust tradition, `cargo` also have wonderful  [document](https://doc.rust-lang.org/cargo/reference/overriding-dependencies.html) to learn the basics. The problem here is exactly the same case as in the tutorial, I followed the instruction, cloned `winit v0.30.9`, which is the version used in alacritty, and applied the fix in [commit 488c036](https://github.com/rust-windowing/winit/commit/488c036a05d418e13bbdcdc349e2db2f6b7f58e2). I use Windows 11, so the fix is as simple as ignore all the Win10 fix, and just use `suggested_rect` when the window is in another monitor with different DPI. After the fix, I tested it with an empty window, works great, next I cloned alacritty, added `[patch.crates-io]` to its cargo manifest, compiled the executable, and viola, my own `alacritty.exe` works great when dragged between two monitors, problem solved!
+
