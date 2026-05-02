@@ -1,15 +1,15 @@
 ---
    layout: post
-   title: "Trying out Neovim as a VScode user"
-   date:   2026-04-05 20:34:41 +0800
+   title: "Today I Learned how to override Rust crates"
+   date:   2026-05-03 00:31:41 +0800
    categories: rust
    tags: rust winit alacritty
 ---
 
-Today I Learned how to override rust project dependency, in order to use local fork of a crate that's been published on crates.io.
+Today I Learned how to override a Rust project dependency, in order to use the local fork of a crate that's been published on crates.io.
 
 ## The problem
-As I mentioned in [Trying out Neovim as a VScode user](https://ok3721.github.io/others/2026/04/05/trying-neovim.html), currently `neovide` and `alacritty` hav a weird [glitch‌](https://github.com/alacritty/alacritty/issues/8634) that infinitely resize when you drag one window to a second monitor, which in turn is a [bug](https://github.com/rust-windowing/winit/issues/4041) orginated from upstrem crate.
+As I mentioned in [Trying out Neovim as a VScode user](https://ok3721.github.io/others/2026/04/05/trying-neovim.html), currently `neovide` and `alacritty` have a weird [glitch‌](https://github.com/alacritty/alacritty/issues/8634) that infinitely resizes when you drag one window to a second monitor, which in turn is a [bug](https://github.com/rust-windowing/winit/issues/4041) orginated from the upstream `winit` crate.
 
 While this bug is fixed in `winit v0.31.0-beta.2`, this new version also introduces lots of API updates and it won't be merged to alacritty anytime soon‌ ([alacritty/pull/8750](https://github.com/alacritty/alacritty/pull/8750))
 
